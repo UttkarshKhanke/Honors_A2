@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -15,10 +14,8 @@ class AdminUsersController extends Controller
     public function index()
     {
         $users = User::all();
-
         return view('admin.users.index', compact(['users']));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -27,7 +24,6 @@ class AdminUsersController extends Controller
         $roles = Role::all();
         return view('admin.users.create', compact('roles'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -41,7 +37,9 @@ class AdminUsersController extends Controller
             'password' => Hash::make('Admin123'),
         ]);
 
-        return redirect()->route('admin-users');
+
+        Session::flash('admin_flash', 'User created successfully.');
+        return redirect(route('admin-users'));
     }
 
     /**
@@ -51,7 +49,6 @@ class AdminUsersController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -59,7 +56,6 @@ class AdminUsersController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -67,7 +63,6 @@ class AdminUsersController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      */

@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Our Articles @if(isset($title)) {{ ' | '.$title}} @endif</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -44,22 +44,30 @@
             <ul class="mt-8">
                 <li>
                     <a
-                        href="{{ route('welcome') }}"
-                        class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
-                        >Main Site</a
-                    >
-                    <a
                         href="{{ route('admin') }}"
                         class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
-                        >Admin Home</a
+                        >Home</a
                     >
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a :href="route('logout')"
-                            class="block px-4 py-2 hover:bg-indigo-800 rounded-md cursor-pointer"
-                            onclick="event.preventDefault();this.closest('form').submit();">
-                                    {{ __('Log Out') }}</a>
-                    </form>
+                    <a
+                        href="{{ route('admin-users') }}"
+                        class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
+                        >All Users</a
+                    >
+                    <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
+                        >Create User</a
+                    >
+                    <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
+                        >All Posts</a
+                    >
+                    <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
+                        >Create Post</a
+                    >
                 </li>
             </ul>
         </nav>
@@ -85,10 +93,10 @@
                     </svg>
                 </button>
                 <span class="block text-2xl sm:text-3xl font-bold p-4"
-                    >@if(isset($header)) {{ $header }} @endif</span
+                    >{{ $header }}</span
                 >
             </header>
-            <main class="p-6">
+            <main>
                 {{ $slot }}
             </main>
         </div>

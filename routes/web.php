@@ -31,11 +31,17 @@ Route::get('/admin', [
 Route::get('/admin/users', [
     AdminUsersController::class, 'index'
 ])->middleware('auth')->name('admin-users');
-
 Route::get('/admin/users/create', [
     AdminUsersController::class, 'create'
 ])->middleware('auth')->name('admin-users-create');
-
 Route::post('/admin/users/create', [
     AdminUsersController::class, 'store'
 ])->middleware('auth')->name('admin-users-create');
+
+Route::get('/admin/users/{id}/edit', [
+    AdminUsersController::class, 'edit'
+])->middleware('auth')->name('admin-users-edit');
+
+Route::patch('/admin/users/{id}/edit', [
+    AdminUsersController::class, 'update'
+])->middleware('auth')->name('admin-users-edit');

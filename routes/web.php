@@ -1,8 +1,11 @@
 <?php
+
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,19 +34,35 @@ Route::get('/admin', [
 Route::get('/admin/users', [
     AdminUsersController::class, 'index'
 ])->middleware('auth')->name('admin-users');
-
 Route::get('/admin/users/create', [
     AdminUsersController::class, 'create'
 ])->middleware('admin')->name('admin-users-create');
-
 Route::post('/admin/users/create', [
     AdminUsersController::class, 'store'
 ])->middleware('admin')->name('admin-users-create');
-
 Route::get('/admin/users/{id}/edit', [
     AdminUsersController::class, 'edit'
 ])->middleware('admin')->name('admin-users-edit');
-
 Route::patch('/admin/users/{id}/edit', [
     AdminUsersController::class, 'update'
 ])->middleware('admin')->name('admin-users-edit');
+
+Route::get('/admin/categories', [
+    CategoryController::class, 'index'
+])->middleware('auth')->name('admin-categories');
+
+Route::get('/admin/categories/create', [
+    CategoryController::class, 'create'
+])->middleware('auth')->name('admin-categories-create');
+
+Route::post('/admin/categories/create', [
+    CategoryController::class, 'store'
+])->middleware('auth')->name('admin-categories-create');
+
+Route::get('/admin/categories/{id}/edit', [
+    CategoryController::class, 'edit'
+])->middleware('admin')->name('admin-categories-edit');
+
+Route::patch('/admin/categories/{id}/edit', [
+    CategoryController::class, 'update'
+])->middleware('admin')->name('admin-categories-edit');

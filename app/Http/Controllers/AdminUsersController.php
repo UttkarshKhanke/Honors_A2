@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
 use App\Http\Requests\AddUserRequest;
 use App\Http\Requests\EditUserRequest;
 use App\Models\Role;
@@ -15,7 +14,8 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(3);
+
         return view('admin.users.index', compact(['users']));
     }
     /**
@@ -57,7 +57,6 @@ class AdminUsersController extends Controller
         $roles = Role::all();
         return view('admin.users.edit', compact('roles', 'user'));
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -69,7 +68,6 @@ class AdminUsersController extends Controller
         Session::flash('admin_flash', 'User edited successfully.');
         return redirect(route('admin-users'));
     }
-
     /**
      * Remove the specified resource from storage.
      */

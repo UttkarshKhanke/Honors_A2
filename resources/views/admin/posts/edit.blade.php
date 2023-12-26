@@ -19,8 +19,8 @@
         <select name="category_id" id="category_id" class="block">
             <option disabled>Select a category</option>
             @foreach ($categories as $category)
-            <option value="{{ $category->id }} {{ $category->id == $post->category->id ? 'selected' : '' }}">{{ $category->name }}</option>
-            @endforeach
+            <option value="{{ $category->id }}" {{ $category->id == $post->category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+             @endforeach
         </select>
     </div>
 

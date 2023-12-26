@@ -22,7 +22,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.posts.edit', compact('categories', 'post'));
+    }
     }
     /**
      * Store a newly created resource in storage.

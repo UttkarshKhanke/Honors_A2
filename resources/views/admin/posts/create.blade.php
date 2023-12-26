@@ -4,13 +4,11 @@
     </x-slot>
     <form method="POST" action="{{ route('admin-posts-create') }}" class="p-3">
         @csrf
-
         <!-- Title -->
         <div class="p-2">
             <label for="name">{{ __('Title') }}</label>
             <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" required autofocus autocomplete="title" />
         </div>
-
         <!-- Category -->
         <div class="p-2">
             <label for="category_id">{{ __('Category') }}</label>
@@ -34,18 +32,6 @@
         <div class="block p-2">
             <x-primary-button type="submit">Create</x-primary-button>
         </div>
+
     </form>
-    <x-slot name="scripts">
-        <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
-    </x-slot>
-    <script>
-        // ClassicEditor
-        //     .create( document.querySelector( '#content1' ) )
-        //     .then( editor => {
-        //             console.log( editor );
-        //     } )
-        //     .catch( error => {
-        //             console.error( error );
-        //     } );
-    </script>
 </x-admin-layout>
